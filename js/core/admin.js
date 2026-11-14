@@ -89,6 +89,26 @@
 
     /* ---- Panel de invitados ---- */
     function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+    function confirmBtn(label, fn) {
+      var b = el('button', 'link-btn link-btn--light admin__del', label), armed = false, t = 0;
+      b.type = 'button';
+      b.addEventListener('click', function () {
+        if (!armed) {
+          armed = true; b.textContent = T.sure || '¿Seguro? Toca otra vez'; b.classList.add('is-armed');
+          t = setTimeout(function () { armed = false; b.textContent = label; b.classList.remove('is-armed'); }, 3500); return;
+        }
+        clearTimeout(t); b.disabled = true; b.textContent = '…';
+        fn().catch(function () { b.disabled = false; armed = false; b.classList.remove('is-armed'); b.textContent = T.offline || 'Error'; });
+      });
+      return b;
+    }
+    function act(extra) {
+      return fetch(cfg.url, { method: 'POST', body: JSON.stringify(Object.assign({ slug: App.slug, pin: okPin }, extra)) })
+        .then(function (r) { return r.json(); })
+        .then(function (r) { if (!r.ok) throw new Error(r.error || 'error'); return call(okPin); })
+        .then(function (r) { if (r.ok) showAdmin(r); });
+    }
+    var clearAll = null;
     function showAdmin(r) {
       var g = r.guests || [], yes = g.filter(function (x) { return x.attending; });
       var people = yes.reduce(function (s, x) { return s + (+x.guests || 0); }, 0);
@@ -103,8 +123,13 @@
         var top = el('div', 'guest__top'); top.appendChild(el('span', 'guest__name', x.name));
         top.appendChild(el('span', 'guest__badge', x.attending ? T.yes + ' · ' + x.guests : T.no)); li.appendChild(top);
         if (x.message) li.appendChild(el('p', 'guest__msg', '“' + x.message + '”'));
-        li.appendChild(el('span', 'guest__date', x.date)); list.appendChild(li);
+        var foot = el('div', 'guest__foot'); foot.appendChild(el('span', 'guest__date', x.date));
+        foot.appendChild(confirmBtn(T.del || 'Eliminar', function () { return act({ action: 'delete', row: x.row, name: x.name }); }));
+        li.appendChild(foot); list.appendChild(li);
       });
+      var box = App.$('.admin__actions');
+      if (clearAll) clearAll.remove();
+      if (g.length) { clearAll = confirmBtn(T.clearAll || 'Vaciar lista', function () { return act({ action: 'clear' }); }); box.insertBefore(clearAll, App.$('#adminExit')); } else clearAll = null;
       admin.hidden = false; admin.scrollTop = 0; document.body.classList.add('is-modal');
       requestAnimationFrame(function () { admin.classList.add('is-on'); });
     }

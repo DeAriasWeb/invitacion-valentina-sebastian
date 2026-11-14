@@ -45,3 +45,10 @@ body.is-modal { overflow: hidden; }
 .admin__empty { padding: 40px 0; text-align: center; font-family: var(--f-display); font-style: italic; font-size: 21px; opacity: .7; }
 .admin__actions { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 18px; margin-top: 34px; }
 .form__status { min-height: 1.4em; text-align: center; font-family: var(--f-display); font-style: italic; font-size: 19px; color: var(--ink); margin: -14px 0 -10px; }
+
+.guest__foot { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.admin__del { font-size: 10px; letter-spacing: .22em; padding: 10px 2px; color: rgba(246,240,229,.55); }
+.guest__foot .admin__del::after { bottom: 6px; }
+.admin__del.is-armed { color: #f0a9a0; }
+.admin__actions .admin__del { color: var(--gold-light); font-size: 11px; letter-spacing: .32em; }
+.admin__actions .admin__del.is-armed { color: #f0a9a0; }
