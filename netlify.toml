@@ -1,0 +1,38 @@
+# Netlify: publica la carpeta tal cual (sitio estático) + una función que
+# entrega el HTML con las metaetiquetas Open Graph de CADA invitación.
+[build]
+  publish = "."
+  functions = "netlify/functions"
+
+[functions]
+  # La función lee estos archivos en tiempo de ejecución
+  included_files = ["index.html", "js/config/event.js"]
+
+# /            -> invitación predeterminada (demo)
+# /i/<slug>    -> invitación con ese slug (ver js/config/event.js)
+[[redirects]]
+  from = "/"
+  to = "/.netlify/functions/invitacion"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/i/:slug"
+  to = "/.netlify/functions/invitacion?slug=:slug"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
