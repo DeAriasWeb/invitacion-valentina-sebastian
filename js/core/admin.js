@@ -105,7 +105,6 @@
         if (x.message) li.appendChild(el('p', 'guest__msg', '“' + x.message + '”'));
         li.appendChild(el('span', 'guest__date', x.date)); list.appendChild(li);
       });
-      var a = App.$('#adminSheet'); if (r.sheetUrl) { a.href = r.sheetUrl; a.hidden = false; } else a.hidden = true;
       admin.hidden = false; admin.scrollTop = 0; document.body.classList.add('is-modal');
       requestAnimationFrame(function () { admin.classList.add('is-on'); });
     }
