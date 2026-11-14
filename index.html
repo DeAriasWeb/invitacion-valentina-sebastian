@@ -12,14 +12,14 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Valentina &amp; Sebastián · Nos casamos">
   <meta property="og:description" content="Te invitamos a celebrar nuestra boda el 20 de marzo de 2027. Abre tu invitación.">
-  <meta property="og:image" content="https://boda-valentina-sebastian.netlify.app/assets/images/vista-previa.jpg">
+  <meta property="og:image" content="https://invitacion-valentina-sebastian.vercel.app/assets/images/vista-previa.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:url" content="https://boda-valentina-sebastian.netlify.app/">
+  <meta property="og:url" content="https://invitacion-valentina-sebastian.vercel.app/">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Valentina &amp; Sebastián · Nos casamos">
   <meta name="twitter:description" content="Te invitamos a celebrar nuestra boda el 20 de marzo de 2027. Abre tu invitación.">
-  <meta name="twitter:image" content="https://boda-valentina-sebastian.netlify.app/assets/images/vista-previa.jpg">
+  <meta name="twitter:image" content="https://invitacion-valentina-sebastian.vercel.app/assets/images/vista-previa.jpg">
   <!-- OG:END -->
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -31,7 +31,6 @@
   <link rel="stylesheet" href="css/envelope.css">
   <link rel="stylesheet" href="css/sections.css">
   <link rel="stylesheet" href="css/experiences.css">
-  <link rel="stylesheet" href="css/admin.css">
 </head>
 <body class="is-locked">
 
@@ -272,8 +271,7 @@
           <textarea id="rsvpMsg" name="msg" rows="2"></textarea>
         </label>
 
-        <p class="form__status" id="rsvpStatus" role="status" aria-live="polite"></p>
-        <button class="btn-solid" type="submit" id="rsvpSubmit"><span data-t="texts.rsvpBtn"></span></button>
+        <button class="btn-solid" type="submit"><span data-t="texts.rsvpBtn"></span></button>
       </form>
     </section>
 
@@ -291,41 +289,6 @@
     </section>
   </main>
 
-  <!-- Acceso de organizadores: doble toque en la última foto -->
-  <div class="pin" id="pin" hidden role="dialog" aria-modal="true" aria-labelledby="pinTitle">
-    <div class="pin__backdrop" data-close></div>
-    <div class="pin__box">
-      <button class="pin__x" type="button" data-close aria-label="Cerrar">&times;</button>
-      <span class="orn" aria-hidden="true"></span>
-      <h3 class="pin__title" id="pinTitle" data-t="texts.admin.pinTitle"></h3>
-      <p class="pin__lead" data-t="texts.admin.pinLead"></p>
-      <div class="pin__digits" id="pinDigits">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="Dígito 1">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="Dígito 2">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="Dígito 3">
-        <input type="password" inputmode="numeric" pattern="[0-9]*" maxlength="1" autocomplete="off" aria-label="Dígito 4">
-      </div>
-      <p class="pin__msg" id="pinMsg" role="alert"></p>
-    </div>
-  </div>
-
-  <!-- Panel de invitados (datos desde Google Sheets) -->
-  <section class="admin" id="admin" hidden aria-label="Invitados">
-    <div class="admin__inner">
-      <header class="admin__head">
-        <p class="kicker kicker--light" data-t="names.together"></p>
-        <h2 class="display display--light" data-t="texts.admin.title"></h2>
-      </header>
-      <div class="admin__stats" id="adminStats"></div>
-      <ul class="admin__list" id="adminList"></ul>
-      <div class="admin__actions">
-        <button class="link-btn link-btn--light" type="button" id="adminRefresh"><span data-t="texts.admin.refresh"></span></button>
-        <a class="link-btn link-btn--light" id="adminSheet" target="_blank" rel="noopener" hidden><span data-t="texts.admin.sheet"></span></a>
-        <button class="link-btn link-btn--light" type="button" id="adminExit"><span data-t="texts.admin.exit"></span></button>
-      </div>
-    </div>
-  </section>
-
   <!-- Música -->
   <button class="music" id="musicBtn" type="button" aria-label="Activar música" aria-pressed="false" hidden>
     <span class="music__bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
@@ -340,7 +303,6 @@
   <script src="js/core/countdown.js"></script>
   <script src="js/core/music.js"></script>
   <script src="js/core/reveal.js"></script>
-  <script src="js/core/admin.js"></script>
   <script src="js/envelope.js"></script>
   <script src="js/experiences/carousel.js"></script>
   <script src="js/experiences/gallery3d.js"></script>
