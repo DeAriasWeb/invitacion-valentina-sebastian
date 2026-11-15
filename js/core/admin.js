@@ -36,12 +36,14 @@
     }
 
     /* ---- Modal ---- */
+    var openedAt = 0;
     function openPin() {
-      clear(); pin.hidden = false; document.body.classList.add('is-modal');
+      openedAt = Date.now(); clear(); pin.hidden = false; document.body.classList.add('is-modal');
       requestAnimationFrame(function () { pin.classList.add('is-on'); });
       if (getLock() > Date.now()) tickLock(); else { msg.textContent = ''; setTimeout(function () { inputs[0].focus(); }, 200); }
     }
     function closePin() {
+      if (Date.now() - openedAt < 900) return;   // el toque que abre el cuadro no debe cerrarlo
       pin.classList.remove('is-on'); clearInterval(timer);
       setTimeout(function () { pin.hidden = true; if (admin.hidden) document.body.classList.remove('is-modal'); }, 350);
     }

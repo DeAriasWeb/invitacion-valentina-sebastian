@@ -40,7 +40,7 @@
       function open() {
         if (opened) return; opened = true;
         // 1) Pantalla completa y música, directamente desde el toque del invitado
-        Fullscreen.request();
+        if (ev.fullscreen !== false) Fullscreen.request();   // activa por defecto; con fullscreen: false en event.js se desactiva
         Music.startFromGesture(ev.music);
 
         sobre.classList.add('is-opening');

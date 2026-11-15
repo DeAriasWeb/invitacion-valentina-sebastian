@@ -6,7 +6,7 @@
 body.is-modal { overflow: hidden; }
 
 /* ---------- Modal PIN ---------- */
-.pin { position: fixed; inset: 0; z-index: 160; display: grid; place-items: center; padding: 20px; opacity: 0; transition: opacity .35s var(--ease); }
+.pin { position: fixed; inset: 0; z-index: 160; display: grid; place-items: start center; padding: max(56px, 9vh) 20px 20px; opacity: 0; transition: opacity .35s var(--ease); }
 .pin[hidden] { display: none; } .pin.is-on { opacity: 1; }
 .pin__backdrop { position: absolute; inset: 0; background: rgba(10,16,12,.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); }
 .pin__box { position: relative; width: min(100%, 340px); padding: 34px 24px 28px; text-align: center; color: var(--paper); background: linear-gradient(180deg, var(--ink-2), var(--ink)); border: 1px solid rgba(226,201,148,.5); box-shadow: 0 40px 80px rgba(0,0,0,.6); transform: translateY(14px) scale(.97); transition: transform .5s var(--ease); display: flex; flex-direction: column; align-items: center; gap: 14px; }
