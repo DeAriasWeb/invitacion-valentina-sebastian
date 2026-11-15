@@ -4,7 +4,7 @@
 
   App.register(function (ev) {
     var stage = App.$('#morphStage'), dotsEl = App.$('#morphDots'), capEl = App.$('#morphCap'), fxEl = App.$('#morphFx');
-    var items = ev.gallery.slice(0, 5), n = items.length, urls = [], cur = 0, busy = false, fxI = 0, last = 0, visible = false;
+    var items = ((ev.sets && ev.sets.ayerHoy) || ev.gallery).slice(0, 5), n = items.length, urls = [], cur = 0, busy = false, fxI = 0, last = 0, visible = false;
     var names = (ev.texts.morphFx) || ['Máscara', 'Persianas', 'Mosaico', 'Desplazamiento', 'Disolución'];
 
     var base = document.createElement('div'); base.className = 'mp mp--base'; stage.appendChild(base);

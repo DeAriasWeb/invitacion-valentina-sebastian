@@ -17,7 +17,9 @@
 .hero__kicker { opacity: 0; transition: opacity 1.4s var(--ease) 1s; }
 .inv.is-on .hero__kicker { opacity: 1; }
 .hero__names { display: flex; flex-direction: column; align-items: center; line-height: .86; }
-.mask { display: block; overflow: hidden; padding: .08em .2em .12em; }
+.mask { display: block; overflow: hidden; padding: .22em .6em .3em; margin: -.14em -.6em -.18em; }
+.inv.is-on .mask { animation: unmask 0s linear 3.2s forwards; }
+@keyframes unmask { to { overflow: visible; } }
 .name, .amp { display: block; transform: translateY(115%); transition: transform 1.6s var(--ease); }
 .inv.is-on .name, .inv.is-on .amp { transform: none; }
 .name { font-family: var(--f-script); font-size: clamp(68px, 22vw, 150px); line-height: 1; text-shadow: 0 2px 30px rgba(0,0,0,.35); }

@@ -24,6 +24,8 @@ window.EVENTS = {
     type: 'boda',
     lang: 'es',
 
+    fullscreen: true,
+
     /* ---------- Protagonistas ---------- */
     names: {
       first: 'Valentina',
@@ -180,20 +182,61 @@ window.EVENTS = {
     photos: {
       sobre:      { id: '1519225421980-715cb0215aed', alt: 'Fondo del sobre' },
       carta:      { id: '1511285560929-80b456fea0bc', alt: 'Tarjeta de invitación' },
-      portada:    { id: '1519741497674-611481863552', alt: 'Valentina y Sebastián' },
-      pareja:     { id: '1583939003579-730e3918a45a', alt: 'Los novios' },
+      portada:    { src: 'assets/images/k.png', alt: 'Valentina y Sebastián' },
+     pareja:     { src: 'assets/images/novios.png', alt: 'Los novios' },
       cuenta:     { id: '1469371670807-013ccf25f16a', alt: 'Cuenta regresiva' },
-      cortinas:   { id: '1465495976277-4387d4b0b4c6', alt: 'Nos casamos' },
-      ubicacion:  { id: '1478146896981-b80fe463b330', alt: 'Lugar del evento' },
-      gracias:    { id: '1537633552985-df8429e8048b', alt: 'Gracias' },
+      cortinas:   {  src: 'assets/images/nos_casamos.png', alt: 'Nos casamos' },
+      ubicacion:  { src: 'assets/images/ubicacion.png', alt: 'Lugar del evento' },
+      gracias:    { src: 'assets/images/gracias.png', alt: 'Gracias' },
       // Imagen que se ve al compartir el enlace (independiente del sobre).
       // Ideal 1200 × 630. Por defecto una composición local; para usar una
       // foto: { id: '...' }  o  { src: 'assets/images/vista-previa.jpg' }
       vistaPrevia:{ src: 'assets/images/vista-previa.jpg' }
     },
 
-    /* Colección usada por el carrusel, la galería 3D, las fotos flotantes
-       y la transformación. Agrega o quita elementos libremente (mín. 6). */
+    /* Fotos de cada sección. Si una sección no tiene su lista aquí,
+       usa la lista "gallery" de abajo. */
+        sets: {
+      // "Nuestra historia" (carrusel): 8 fotos
+      historia: [
+        { src: 'assets/images/historia_1.png', caption: 'El primer baile' },
+        { src: 'assets/images/historia_2.png', caption: 'Promesas' },
+        { src: 'assets/images/historia_3.png', caption: 'Flores de ese día' },
+        { src: 'assets/images/historia_4.png', caption: 'Tu mano en la mía' },
+        { src: 'assets/images/historia_5.png', caption: 'El vestido' },
+        { src: 'assets/images/historia_6.png', caption: 'Entre risas' },
+        { src: 'assets/images/historia_7.png', caption: 'Un paseo al atardecer' },
+        { src: 'assets/images/historia_8.png', caption: 'La mesa' }
+      ],
+      // "Instantes" (fotos flotantes): 7 fotos
+      instantes: [
+        { src: 'assets/images/instantes_1.png', caption: '' },
+        { src: 'assets/images/instantes_2.png', caption: '' },
+        { src: 'assets/images/instantes_3.png', caption: '' },
+        { src: 'assets/images/instantes_4.png', caption: '' },
+        { src: 'assets/images/instantes_5.png', caption: '' },
+        { src: 'assets/images/instantes_6.png', caption: '' },
+        { src: 'assets/images/instantes_7.png', caption: '' }
+      ],
+      // "Álbum" (galería 3D): 6 fotos
+      album: [
+        { src: 'assets/images/album_1.png', caption: 'Nuestro primer viaje' },
+        { src: 'assets/images/album_2.png', caption: 'Una tarde cualquiera' },
+        { src: 'assets/images/album_3.png', caption: 'Con la familia' },
+        { src: 'assets/images/album_4.png', caption: 'Celebrando' },
+        { src: 'assets/images/album_5.png', caption: 'Mirando el mar' },
+        { src: 'assets/images/album_6.png', caption: 'Nuestro hogar' }
+      ],
+      // "De ayer a hoy" (transformación): 5 fotos
+      ayerHoy: [
+        { src: 'assets/images/ayer_1.png', caption: 'Cuando nos conocimos' },
+        { src: 'assets/images/ayer_2.png', caption: 'Nuestro primer año' },
+        { src: 'assets/images/ayer_3.png', caption: 'La propuesta' },
+        { src: 'assets/images/ayer_4.png', caption: 'Preparando todo' },
+        { src: 'assets/images/ayer_5.png', caption: 'Hoy' }
+      ]
+    },
+
     gallery: [
       { id: '1511285560929-80b456fea0bc', caption: 'El primer baile' },
       { id: '1519225421980-715cb0215aed', caption: 'Promesas' },

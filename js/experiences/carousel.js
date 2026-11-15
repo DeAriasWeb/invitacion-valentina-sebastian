@@ -2,7 +2,7 @@
 (function () {
   App.register(function (ev) {
     var root = App.$('#cine'), track = App.$('#cineTrack');
-    var items = ev.gallery.slice(0, 8), n = items.length;
+    var items = ((ev.sets && ev.sets.historia) || ev.gallery).slice(0, 8), n = items.length;
     var nowEl = App.$('#cineNow'), totalEl = App.$('#cineTotal'), capEl = App.$('#cineCap');
     totalEl.textContent = String(n).padStart(2, '0');
 

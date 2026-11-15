@@ -16,7 +16,7 @@
     var px = 0, py = 0, tpx = 0, tpy = 0, drag = null, raf = 0, visible = false;
 
     SPEC.forEach(function (S, i) {
-      var it = ev.gallery[(i * 3) % ev.gallery.length];
+      var pool = (ev.sets && ev.sets.instantes) || ev.gallery; var it = pool[i % pool.length];
       var fp = document.createElement('div'); fp.className = 'fp'; fp.style.zIndex = String(Math.round(S.z * 40));
       var en = document.createElement('div'); en.className = 'fp__enter';
       var bob = document.createElement('div'); bob.className = 'fp__bob';

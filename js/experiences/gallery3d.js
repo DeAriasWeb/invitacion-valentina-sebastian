@@ -15,7 +15,7 @@
     var rx = 0, ry = 0, trx = 0, tr_y = 0, focus = -1, drag = null, visible = false, raf = 0, t0 = performance.now(), idle = 0;
 
     LAYOUT.forEach(function (L, i) {
-      var it = ev.gallery[(i * 2 + 1) % ev.gallery.length];
+      var pool = (ev.sets && ev.sets.album) || ev.gallery; var it = pool[i % pool.length];
       var el = document.createElement('div'); el.className = 'g3d__card'; el.setAttribute('role', 'button'); el.tabIndex = 0;
       el.setAttribute('aria-label', it.caption || 'Fotografía');
       el.appendChild(Photos.make(Object.assign({ key: 'g3d' + i }, it), { w: 700, alt: it.caption || '' }));
