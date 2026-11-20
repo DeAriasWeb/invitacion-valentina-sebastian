@@ -45,14 +45,15 @@
         }
         return Promise.all(anims).then(function () { return ls; });
       },
-      function mosaic(u) { // 3 · mosaico que se disuelve
-        var cols = 6, rows = 8, ls = [], anims = [], wrap = document.createElement('div'); wrap.className = 'mp mp--grid'; stage.appendChild(wrap);
-        var r = rect();
+      function mosaic(u) { // 3 · mosaico: cada pieza es la MISMA foto (mismo recorte que la base), recortada con clip-path
+        var cols = 6, rows = 8, anims = [], wrap = document.createElement('div'); wrap.className = 'mp mp--grid'; stage.appendChild(wrap);
         for (var y = 0; y < rows; y++) for (var x = 0; x < cols; x++) {
-          var t = document.createElement('i'); t.className = 'tile';
-          t.style.cssText = 'left:' + (x * 100 / cols) + '%;top:' + (y * 100 / rows) + '%;width:' + (100 / cols + .4) + '%;height:' + (100 / rows + .4) + '%;background-image:url("' + u + '");background-size:' + (cols * 100) + '% ' + (rows * 100) + '%;background-position:' + (x * 100 / (cols - 1)) + '% ' + (y * 100 / (rows - 1)) + '%';
+          var t = document.createElement('i');
+          var top = y * 100 / rows, left = x * 100 / cols, bottom = 100 - (y + 1) * 100 / rows, right = 100 - (x + 1) * 100 / cols;
+          t.style.cssText = 'position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;background-image:url("' + u + '");' +
+            'clip-path:inset(' + Math.max(0, top - .2) + '% ' + Math.max(0, right - .2) + '% ' + Math.max(0, bottom - .2) + '% ' + Math.max(0, left - .2) + '%)';
           wrap.appendChild(t);
-          anims.push(t.animate([{ opacity: 0, transform: 'scale(.4)' }, { opacity: 1, transform: 'scale(1)' }], { duration: 520, delay: Math.random() * 700, easing: 'ease-out', fill: 'both' }).finished);
+          anims.push(t.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 700, delay: Math.random() * 650, easing: 'ease-in-out', fill: 'both' }).finished);
         }
         return Promise.all(anims).then(function () { return [wrap]; });
       },
